@@ -21,3 +21,28 @@ if (viewer) {
     });
   }
 }
+
+const rolloutVideo = document.querySelector("[data-rollout-video]");
+const rolloutToggle = document.querySelector("[data-rollout-toggle]");
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+if (rolloutVideo && reducedMotion.matches) {
+  rolloutVideo.autoplay = false;
+  rolloutVideo.pause();
+  rolloutToggle.textContent = "Play animation";
+  rolloutToggle.setAttribute("aria-label", "Play reconstruction animation");
+}
+
+if (rolloutVideo && rolloutToggle) {
+  rolloutToggle.addEventListener("click", () => {
+    if (rolloutVideo.paused) {
+      rolloutVideo.play();
+      rolloutToggle.textContent = "Pause animation";
+      rolloutToggle.setAttribute("aria-label", "Pause reconstruction animation");
+    } else {
+      rolloutVideo.pause();
+      rolloutToggle.textContent = "Play animation";
+      rolloutToggle.setAttribute("aria-label", "Play reconstruction animation");
+    }
+  });
+}
