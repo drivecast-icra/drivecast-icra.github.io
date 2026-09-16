@@ -15,7 +15,7 @@
     <div class="noise" aria-hidden="true"></div>
     <header class="nav shell">
       <a class="brand" href="#top" aria-label="DriveCAST home"><span class="brand-mark" aria-hidden="true"></span><span>DRIVECAST</span></a>
-      <nav aria-label="Page sections"><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Citation</a></nav>
+      <nav aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Citation</a></nav>
       <div class="venue">ICRA · PROJECT PAGE</div>
     </header>
 
@@ -27,17 +27,16 @@
         <div class="authors" aria-label="Authors"><span>Anonymous Authors</span></div>
         <p class="affiliation">Anonymous submission</p>
         <div class="actions">
-          <span class="action disabled">Paper <small>COMING SOON</small></span>
           <span class="action disabled">Code <small>COMING SOON</small></span>
         </div>
       </section>
 
-      <section class="visual shell"><img src="assets/drivecast-architecture.png" alt="DriveCAST architecture, from source driving logs through Inter2Scene and Scene2BEV to shared planner training" /></section>
-
-      <section class="abstract shell">
+      <section id="abstract" class="abstract shell">
         <p class="section-number">01 · ABSTRACT</p>
         <p class="abstract-copy">Transferring recorded driving scenarios to new environments does not necessarily preserve interaction conditions, and the original images and ego actions may no longer be suitable for training. DriveCAST addresses this with two components: <strong>Inter2Scene</strong> reconstructs interactions under road and kinematic constraints, while <strong>Scene2BEV</strong> converts the reconstructed scene into features compatible with a camera-derived representation. A shared planner learns from transferred experience without rendering new camera images or changing the camera input pathway at inference.</p>
       </section>
+
+      <section class="visual shell"><img src="assets/drivecast-architecture.png" alt="DriveCAST architecture, from source driving logs through Inter2Scene and Scene2BEV to shared planner training" /></section>
 
       <section id="method" class="method shell">
         <div class="section-heading">
