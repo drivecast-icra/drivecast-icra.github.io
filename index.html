@@ -107,6 +107,16 @@
             <h2>Inspect the transferred<br />interaction.</h2>
             <p>Each view uses the same ego-up orientation and 64 × 64 m metric extent. The orange trajectory is the recorded or reconstructed actor; the mint trajectory is the recorded ego or reference-driver rollout.</p>
           </div>
+          <figure class="rollout-feature carla-feature">
+            <video controls autoplay muted loop playsinline preload="metadata" poster="assets/drivecast-carla-front-poster.jpg" aria-label="Front-camera video of the selected DriveCAST reconstruction executed in CARLA">
+              <source src="assets/drivecast-carla-front.mp4" type="video/mp4" />
+              Your browser does not support embedded video.
+            </video>
+            <figcaption>
+              <div><b>CARLA execution</b><span>Selected DriveCAST reconstruction · front camera</span></div>
+              <p>Reference-driver rollout over 0–4 s (80 synchronized frames). This is a reconstructed-scene execution diagnostic, not a learned-policy prediction.</p>
+            </figcaption>
+          </figure>
           <figure class="rollout-feature">
             <img class="rollout-animation" src="assets/interaction-reconstruction.gif" data-rollout-animation data-animation-src="assets/interaction-reconstruction.gif" data-poster-src="assets/interaction-reconstruction-poster.jpg" alt="Animated comparison of the original host, reconstruction without the relation term, and DriveCAST" />
             <figcaption>
