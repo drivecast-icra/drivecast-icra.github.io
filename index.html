@@ -3,79 +3,149 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="DriveCAST transfers recorded driving interactions to new environments while preserving key spatial and temporal relations for camera-based planner training." />
-    <meta name="theme-color" content="#07090f" />
+    <meta name="description" content="DriveCAST transfers recorded driving interactions to new environments while preserving selected spatial and temporal relations for camera-based planner training." />
+    <meta name="theme-color" content="#263788" />
     <title>DriveCAST — Interaction-Preserving Transfer of Driving Scenarios</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="noise" aria-hidden="true"></div>
-    <header class="nav shell">
-      <a class="brand" href="#top" aria-label="DriveCAST home"><span class="brand-mark" aria-hidden="true"></span><span>DRIVECAST</span></a>
-      <nav aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#results">Results</a><a href="#citation">Citation</a></nav>
-      <div class="venue">ICRA · PROJECT PAGE</div>
+    <header class="site-header">
+      <div class="shell nav-wrap">
+        <a class="brand" href="#top" aria-label="DriveCAST home">
+          <span class="brand-symbol" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>DRIVECAST</span>
+        </a>
+        <nav aria-label="Page sections">
+          <a href="#abstract">Abstract</a>
+          <a href="#method">Method</a>
+          <a href="#results">Results</a>
+          <a href="#citation">Citation</a>
+        </nav>
+        <span class="venue">ICRA 2027 · ANONYMOUS</span>
+      </div>
     </header>
 
     <main id="top">
-      <section class="hero shell">
-        <div class="eyebrow"><span></span> AUTONOMOUS DRIVING · SCENARIO TRANSFER</div>
-        <h1>Interaction-Preserving Transfer of <em>Driving Scenarios.</em></h1>
-        <p class="lede">DriveCAST reuses recorded driving interactions in new environments while preserving the spatial and temporal conditions that make each event meaningful.</p>
-        <div class="authors" aria-label="Authors"><span>Anonymous Authors</span></div>
-        <p class="affiliation">Anonymous submission</p>
-        <div class="actions">
-          <span class="action disabled">Code <small>COMING SOON</small></span>
+      <section class="hero">
+        <div class="hero-lines" aria-hidden="true"></div>
+        <div class="shell hero-grid">
+          <div class="hero-copy">
+            <p class="kicker light">Interaction-aware scenario transfer</p>
+            <h1>Transfer the interaction,<br /><span>not just the trajectory.</span></h1>
+            <p class="hero-summary">DriveCAST reconstructs recorded driving events in new road contexts while preserving the relative and temporal conditions that make each interaction meaningful.</p>
+            <div class="submission-note">
+              <strong>DriveCAST</strong>
+              <span>Anonymous ICRA 2027 submission</span>
+            </div>
+          </div>
+          <a class="hero-visual" href="assets/interaction-transfer.png" target="_blank" rel="noopener" aria-label="Open the interaction-transfer comparison at full resolution">
+            <img src="assets/interaction-transfer.png" alt="Original scenes, transfer without relation matching, and DriveCAST relation-preserving transfer" />
+            <span class="visual-caption"><b>Interaction transfer</b> · Original → w/o Relation → DriveCAST</span>
+            <span class="zoom-label">View full size ↗</span>
+          </a>
         </div>
       </section>
 
-      <section id="abstract" class="abstract shell">
-        <p class="section-number">01 · ABSTRACT</p>
-        <p class="abstract-copy">Transferring recorded driving scenarios to new environments does not necessarily preserve interaction conditions, and the original images and ego actions may no longer be suitable for training. DriveCAST addresses this with two components: <strong>Inter2Scene</strong> reconstructs interactions under road and kinematic constraints, while <strong>Scene2BEV</strong> converts the reconstructed scene into features compatible with a camera-derived representation. A shared planner learns from transferred experience without rendering new camera images or changing the camera input pathway at inference.</p>
-      </section>
-
-      <section class="visual shell"><img src="assets/drivecast-architecture.png" alt="DriveCAST architecture, from source driving logs through Inter2Scene and Scene2BEV to shared planner training" /></section>
-
-      <section id="method" class="method shell">
-        <div class="section-heading">
-          <div><p class="section-number">02 · METHOD</p><h2>Transfer the interaction,<br />not just the trajectory.</h2></div>
-          <p>DriveCAST separates what should remain fixed, what should be preserved, and what must be generated again.</p>
-        </div>
-        <div class="method-grid">
-          <article><span>01</span><h3>Inter2Scene</h3><p>Adjusts surrounding vehicle position, speed, and timing while keeping the target road, current ego state, and ego history fixed.</p></article>
-          <article><span>02</span><h3>Reference rollout</h3><p>Generates new ego supervision in simulation, so the transferred conditions are not tied to the recorded ego response.</p></article>
-          <article><span>03</span><h3>Scene2BEV</h3><p>Maps structured road and vehicle histories into BEV features compatible with the frozen camera encoder and shared planner.</p></article>
-        </div>
-        <figure class="figure"><img src="assets/interaction-transfer.png" alt="Two qualitative examples comparing original scenes, geometry-only transfer, and DriveCAST relation-preserving transfer" loading="lazy" /><figcaption>Qualitative comparison of original scenes, transfer without relation matching, and DriveCAST.</figcaption></figure>
-      </section>
-
-      <section id="results" class="results">
-        <div class="shell">
+      <section id="abstract" class="section abstract-section">
+        <div class="shell two-column">
           <div class="section-heading">
-            <div><p class="section-number">03 · RESULTS</p><h2>Camera-only inference,<br />transferred experience.</h2></div>
-            <p>All driving evaluations retain the original camera input pathway. Inter2Scene and Scene2BEV are used only to construct training experience.</p>
+            <p class="kicker">01 · Overview</p>
+            <h2>Abstract</h2>
           </div>
-          <div class="metrics" aria-label="Selected results">
-            <div><strong>39.29</strong><span>Driving Score</span><small>nuScenes + nuPlan</small></div>
-            <div><strong>19.09%</strong><span>Success Rate</span><small>nuScenes + nuPlan</small></div>
-            <div><strong>43.94</strong><span>Scene2BEV NDS</span><small>Frozen decoder</small></div>
-            <div><strong>32.65</strong><span>Scene2BEV mAP</span><small>Frozen decoder</small></div>
-          </div>
-          <div class="result-figures">
-            <figure><img src="assets/scene2bev-detection.png" alt="Ground truth, teacher, Scene2BEV student, and overlay detection results" loading="lazy" /><figcaption>Scene2BEV preserves useful downstream structure with a frozen decoder.</figcaption></figure>
-            <figure><img src="assets/planning-comparison.png" alt="Camera observations with Base Planner and DriveCAST trajectory predictions in two scenes" loading="lazy" /><figcaption>Camera-input planning comparison between the Base Planner and DriveCAST.</figcaption></figure>
+          <div class="abstract-copy">
+            <p>Transferring recorded driving scenarios to new environments does not necessarily preserve interaction conditions, and the original images and ego actions may no longer be suitable for training on the modified scenarios. We propose <strong>DriveCAST</strong>, an interaction-preserving scenario transfer framework for camera-based planning.</p>
+            <p><strong>Inter2Scene</strong> formulates surrounding-vehicle motion adjustment as constrained matching of selected relative and temporal relations defined with respect to consistently computed reference ego trajectories, while keeping the target road and ego conditions fixed. A common reference driver then generates new ego trajectory targets in simulation. <strong>Scene2BEV</strong> converts reconstructed scenes into bird’s-eye-view features compatible with camera-derived representations.</p>
+            <p>These features are used alongside original camera data to train a shared planner, while the image encoder and Scene2BEV remain frozen. This enables learning from transferred experience without rendering camera images for every transferred scene or changing the camera input pathway at inference. We evaluate open- and closed-loop planning through the camera input pathway, with matched external-data volumes and training budgets for comparison with constrained geometric transfer.</p>
           </div>
         </div>
       </section>
 
-      <section id="citation" class="citation shell">
-        <div><p class="section-number">04 · CITATION</p><h2>Paper and code<br />coming soon.</h2></div>
-        <div class="cite-box"><code>@inproceedings{anonymous_drivecast,<br />&nbsp;&nbsp;title = {DriveCAST: Interaction-Preserving Transfer of Driving Scenarios},<br />&nbsp;&nbsp;author = {Anonymous}<br />}</code></div>
+      <section class="section principle-section">
+        <div class="shell">
+          <div class="section-heading wide">
+            <p class="kicker">The transfer principle</p>
+            <h2>Keep, preserve, regenerate.</h2>
+            <p>DriveCAST separates the scene context from the interaction conditions and the response used for supervision.</p>
+          </div>
+          <div class="principle-grid">
+            <article><span class="card-number">01</span><h3>Keep fixed</h3><p>Target road structure, current ego state, and ego observation history.</p></article>
+            <article><span class="card-number">02</span><h3>Preserve</h3><p>Selected relative spacing, relative speed, and event timing conditions.</p></article>
+            <article><span class="card-number">03</span><h3>Regenerate</h3><p>New ego trajectory supervision from a common reference driver in simulation.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="method" class="section method-section">
+        <div class="shell">
+          <div class="section-heading on-blue">
+            <p class="kicker light">02 · Method</p>
+            <h2>From recorded event<br />to transferable experience.</h2>
+          </div>
+          <div class="method-flow" aria-label="DriveCAST method stages">
+            <article><span>Stage 01</span><h3>Inter2Scene</h3><p>Adjusts surrounding-vehicle motion under road, kinematic, and history-continuity constraints to match selected interaction relations.</p></article>
+            <div class="flow-arrow" aria-hidden="true">→</div>
+            <article><span>Stage 02</span><h3>Reference rollout</h3><p>Executes the reconstructed scenario with a common reference driver and produces new ego supervision.</p></article>
+            <div class="flow-arrow" aria-hidden="true">→</div>
+            <article><span>Stage 03</span><h3>Scene2BEV</h3><p>Maps structured road and vehicle histories to compatible BEV features for shared planner training.</p></article>
+          </div>
+          <a class="architecture-card" href="assets/drivecast-architecture.png" target="_blank" rel="noopener" aria-label="Open the full DriveCAST architecture figure">
+            <img src="assets/drivecast-architecture.png" alt="DriveCAST architecture from source logs through Inter2Scene and Scene2BEV to shared planner training" />
+            <span><b>Overall architecture</b> · Select the figure to inspect it at full resolution <i>↗</i></span>
+          </a>
+        </div>
+      </section>
+
+      <section id="results" class="section results-section">
+        <div class="shell">
+          <div class="section-heading wide">
+            <p class="kicker">03 · Results</p>
+            <h2>Measured through the<br />camera pathway.</h2>
+            <p>All driving evaluations retain the original camera input pathway. Generated features are used only during planner training.</p>
+          </div>
+          <div class="comparison-panel">
+            <div class="comparison-intro"><span>Matched nuScenes comparison</span><h3>Relation-aware transfer improves closed-loop driving.</h3><p>DriveCAST and constrained geometric transfer use matched external-data volumes and training budgets.</p></div>
+            <div class="metric-comparison">
+              <article>
+                <div class="metric-title"><span>Driving Score</span><strong>+1.49</strong></div>
+                <div class="bar-row"><small>Geometric</small><i style="--value:91.1%"></i><b>36.42</b></div>
+                <div class="bar-row drivecast"><small>DriveCAST</small><i style="--value:94.8%"></i><b>37.91</b></div>
+              </article>
+              <article>
+                <div class="metric-title"><span>Success Rate</span><strong>+1.36%p</strong></div>
+                <div class="bar-row"><small>Geometric</small><i style="--value:76.9%"></i><b>14.55%</b></div>
+                <div class="bar-row drivecast"><small>DriveCAST</small><i style="--value:84.1%"></i><b>15.91%</b></div>
+              </article>
+            </div>
+          </div>
+          <div class="metrics" aria-label="Additional selected results">
+            <article><strong>39.29</strong><span>Driving Score</span><small>nuScenes + nuPlan</small></article>
+            <article><strong>19.09%</strong><span>Success Rate</span><small>nuScenes + nuPlan</small></article>
+            <article><strong>43.94</strong><span>Scene2BEV NDS</span><small>Frozen decoder</small></article>
+            <article><strong>32.65</strong><span>Scene2BEV mAP</span><small>Frozen decoder</small></article>
+          </div>
+          <div class="result-gallery">
+            <a href="assets/scene2bev-detection.png" target="_blank" rel="noopener"><img src="assets/scene2bev-detection.png" alt="Ground truth, teacher, Scene2BEV student, and overlay detection results" loading="lazy" /><span><b>Feature compatibility</b>Frozen-decoder evaluation of teacher and Scene2BEV features.</span></a>
+            <a href="assets/planning-comparison.png" target="_blank" rel="noopener"><img src="assets/planning-comparison.png" alt="Camera observations with Base Planner and DriveCAST trajectory predictions" loading="lazy" /><span><b>Camera-input planning</b>Qualitative comparison between the Base Planner and DriveCAST.</span></a>
+          </div>
+          <aside class="evidence-note"><b>Scope and interpretation</b><p>The current study considers same-direction adjacent-lane cut-ins. Average open-loop metrics show no clear advantage, and the reported closed-loop point estimates do not establish statistical significance.</p></aside>
+        </div>
+      </section>
+
+      <section id="citation" class="section citation-section">
+        <div class="shell two-column">
+          <div class="section-heading"><p class="kicker light">04 · Citation</p><h2>Anonymous<br />submission.</h2><p>Author and affiliation information is intentionally omitted during review.</p></div>
+          <pre><code>@inproceedings{anonymous_drivecast,
+  title  = {DriveCAST: Interaction-Preserving
+            Transfer of Driving Scenarios},
+  author = {Anonymous}
+}</code></pre>
+        </div>
       </section>
     </main>
 
-    <footer class="shell"><span>© DriveCAST · Anonymous project page</span><span>ICRA submission</span></footer>
+    <footer><div class="shell footer-inner"><span>DriveCAST · Anonymous project page</span><span>ICRA 2027 submission</span></div></footer>
   </body>
 </html>
