@@ -6,6 +6,7 @@
     <meta name="description" content="DriveCAST transfers recorded driving interactions to new environments while preserving selected spatial and temporal relations for camera-based planner training." />
     <meta name="theme-color" content="#263788" />
     <title>DriveCAST — Interaction-Preserving Transfer of Driving Scenarios</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -21,6 +22,7 @@
         <nav aria-label="Page sections">
           <a href="#abstract">Abstract</a>
           <a href="#method">Method</a>
+          <a href="#qualitative">Examples</a>
           <a href="#results">Results</a>
           <a href="#citation">Citation</a>
         </nav>
@@ -41,9 +43,9 @@
               <span>Anonymous ICRA 2027 submission</span>
             </div>
           </div>
-          <a class="hero-visual" href="assets/interaction-transfer.png" target="_blank" rel="noopener" aria-label="Open the interaction-transfer comparison at full resolution">
-            <img src="assets/interaction-transfer.png" alt="Original scenes, transfer without relation matching, and DriveCAST relation-preserving transfer" />
-            <span class="visual-caption"><b>Interaction transfer</b> · Original → w/o Relation → DriveCAST</span>
+          <a class="hero-visual" href="assets/transfer-case-01.png" target="_blank" rel="noopener" aria-label="Open the selected interaction-transfer example at full resolution">
+            <img src="assets/transfer-case-01.png" alt="A selected scene shown as the original host, transfer without the relation term, and DriveCAST" />
+            <span class="visual-caption"><b>Interaction transfer</b> · Original host → w/o Relation Term → DriveCAST</span>
             <span class="zoom-label">View full size ↗</span>
           </a>
         </div>
@@ -98,45 +100,72 @@
         </div>
       </section>
 
+      <section id="qualitative" class="section qualitative-section">
+        <div class="shell">
+          <div class="section-heading wide">
+            <p class="kicker">03 · Qualitative examples</p>
+            <h2>Inspect the transferred<br />interaction.</h2>
+            <p>Each view uses the same ego-up orientation and 64 × 64 m metric extent. The orange trajectory is the recorded or reconstructed actor; the mint trajectory is the recorded ego or reference-driver rollout.</p>
+          </div>
+          <div class="case-viewer" data-case-viewer>
+            <div class="case-toolbar" role="group" aria-label="Select a qualitative example">
+              <button class="case-button is-active" type="button" data-case-src="assets/transfer-case-01.png" data-case-alt="Selected curved-road transfer shown for the original host, transfer without the relation term, and DriveCAST" data-case-title="Curved road" aria-pressed="true"><span>01</span> Curved road</button>
+              <button class="case-button" type="button" data-case-src="assets/transfer-case-02.png" data-case-alt="Selected gentle-bend transfer shown for the original host, transfer without the relation term, and DriveCAST" data-case-title="Gentle bend" aria-pressed="false"><span>02</span> Gentle bend</button>
+            </div>
+            <a class="case-stage" href="assets/transfer-case-01.png" target="_blank" rel="noopener" data-case-link>
+              <img src="assets/transfer-case-01.png" alt="Selected curved-road transfer shown for the original host, transfer without the relation term, and DriveCAST" loading="lazy" data-case-image />
+            </a>
+            <div class="case-caption">
+              <div><b data-case-title>Curved road</b><span>Original host · w/o Relation Term · DriveCAST</span></div>
+              <p>Selected reconstruction diagnostic. The edited-scene ego path is a stored reference-driver rollout, not a learned policy prediction.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="results" class="section results-section">
         <div class="shell">
           <div class="section-heading wide">
-            <p class="kicker">03 · Results</p>
+            <p class="kicker">04 · Results</p>
             <h2>Measured through the<br />camera pathway.</h2>
             <p>All driving evaluations retain the original camera input pathway. Generated features are used only during planner training.</p>
           </div>
           <div class="comparison-panel">
-            <div class="comparison-intro"><span>Matched nuScenes comparison</span><h3>Relation-aware transfer improves closed-loop driving.</h3><p>DriveCAST and constrained geometric transfer use matched external-data volumes and training budgets.</p></div>
+            <div class="comparison-intro"><span>Controlled transfer comparison</span><h3>Separate the relation term from the full-data extension.</h3><p>Under matched data volume and training budget, the current point estimates do not show a closed-loop gain from the relation term. The expanded replay setting is reported separately.</p></div>
             <div class="metric-comparison">
               <article>
-                <div class="metric-title"><span>Driving Score</span><strong>+1.49</strong></div>
-                <div class="bar-row"><small>Geometric</small><i style="--value:91.1%"></i><b>36.42</b></div>
-                <div class="bar-row drivecast"><small>DriveCAST</small><i style="--value:94.8%"></i><b>37.91</b></div>
+                <div class="metric-title"><span>Driving Score ↑</span><strong>DS</strong></div>
+                <div class="bar-row geometric"><small>Geometric</small><i style="--value:100%"></i><b>37.91</b></div>
+                <div class="bar-row drivecast"><small>DriveCAST</small><i style="--value:96.1%"></i><b>36.42</b></div>
               </article>
               <article>
-                <div class="metric-title"><span>Success Rate</span><strong>+1.36%p</strong></div>
-                <div class="bar-row"><small>Geometric</small><i style="--value:76.9%"></i><b>14.55%</b></div>
-                <div class="bar-row drivecast"><small>DriveCAST</small><i style="--value:84.1%"></i><b>15.91%</b></div>
+                <div class="metric-title"><span>Success Rate ↑</span><strong>SR</strong></div>
+                <div class="bar-row geometric"><small>Geometric</small><i style="--value:100%"></i><b>15.91%</b></div>
+                <div class="bar-row drivecast"><small>DriveCAST</small><i style="--value:91.5%"></i><b>14.55%</b></div>
               </article>
             </div>
           </div>
           <div class="metrics" aria-label="Additional selected results">
-            <article><strong>39.29</strong><span>Driving Score</span><small>nuScenes + nuPlan</small></article>
-            <article><strong>19.09%</strong><span>Success Rate</span><small>nuScenes + nuPlan</small></article>
+            <article><strong>39.29</strong><span>Driving Score</span><small>DriveCAST + Native Log Replay</small></article>
+            <article><strong>19.09%</strong><span>Success Rate</span><small>DriveCAST + Native Log Replay</small></article>
             <article><strong>43.94</strong><span>Scene2BEV NDS</span><small>Frozen decoder</small></article>
             <article><strong>32.65</strong><span>Scene2BEV mAP</span><small>Frozen decoder</small></article>
           </div>
+          <a class="planning-feature" href="assets/camera-planning-extension.png" target="_blank" rel="noopener">
+            <img src="assets/camera-planning-extension.png" alt="Six camera observations with Base Planner and DriveCAST plus Native Log Replay trajectory predictions" loading="lazy" />
+            <span><b>Camera-input planning</b><small>Base Planner vs. DriveCAST + Native Log Replay · selected favorable example from the completed validation predictions</small><i>View full size ↗</i></span>
+          </a>
           <div class="result-gallery">
             <a href="assets/scene2bev-detection.png" target="_blank" rel="noopener"><img src="assets/scene2bev-detection.png" alt="Ground truth, teacher, Scene2BEV student, and overlay detection results" loading="lazy" /><span><b>Feature compatibility</b>Frozen-decoder evaluation of teacher and Scene2BEV features.</span></a>
-            <a href="assets/planning-comparison.png" target="_blank" rel="noopener"><img src="assets/planning-comparison.png" alt="Camera observations with Base Planner and DriveCAST trajectory predictions" loading="lazy" /><span><b>Camera-input planning</b>Qualitative comparison between the Base Planner and DriveCAST.</span></a>
+            <a href="assets/selected-reconstructions.png" target="_blank" rel="noopener"><img src="assets/selected-reconstructions.png" alt="Three selected DriveCAST reconstructions on a curved road, gentle bend, and lane entry" loading="lazy" /><span><b>Reconstruction gallery</b>Three readable diagnostic examples across distinct host scenes.</span></a>
           </div>
-          <aside class="evidence-note"><b>Scope and interpretation</b><p>The current study considers same-direction adjacent-lane cut-ins. Average open-loop metrics show no clear advantage, and the reported closed-loop point estimates do not establish statistical significance.</p></aside>
+          <aside class="evidence-note"><b>Scope and interpretation</b><p>The current study considers same-direction adjacent-lane cut-ins. Average open-loop metrics show no clear advantage. Closed-loop values are single-seed point estimates, and selected qualitative examples are not representative performance samples.</p></aside>
         </div>
       </section>
 
       <section id="citation" class="section citation-section">
         <div class="shell two-column">
-          <div class="section-heading"><p class="kicker light">04 · Citation</p><h2>Anonymous<br />submission.</h2><p>Author and affiliation information is intentionally omitted during review.</p></div>
+          <div class="section-heading"><p class="kicker light">05 · Citation</p><h2>Anonymous<br />submission.</h2><p>Author and affiliation information is intentionally omitted during review.</p></div>
           <pre><code>@inproceedings{anonymous_drivecast,
   title  = {DriveCAST: Interaction-Preserving
             Transfer of Driving Scenarios},
@@ -147,5 +176,6 @@
     </main>
 
     <footer><div class="shell footer-inner"><span>DriveCAST · Anonymous project page</span><span>ICRA 2027 submission</span></div></footer>
+    <script src="script.js"></script>
   </body>
 </html>
