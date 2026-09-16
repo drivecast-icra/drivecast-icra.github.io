@@ -22,25 +22,26 @@ if (viewer) {
   }
 }
 
-const rolloutVideo = document.querySelector("[data-rollout-video]");
+const rolloutAnimation = document.querySelector("[data-rollout-animation]");
 const rolloutToggle = document.querySelector("[data-rollout-toggle]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-if (rolloutVideo && reducedMotion.matches) {
-  rolloutVideo.autoplay = false;
-  rolloutVideo.pause();
+if (rolloutAnimation && rolloutToggle && reducedMotion.matches) {
+  rolloutAnimation.src = rolloutAnimation.dataset.posterSrc;
   rolloutToggle.textContent = "Play animation";
   rolloutToggle.setAttribute("aria-label", "Play reconstruction animation");
 }
 
-if (rolloutVideo && rolloutToggle) {
+if (rolloutAnimation && rolloutToggle) {
   rolloutToggle.addEventListener("click", () => {
-    if (rolloutVideo.paused) {
-      rolloutVideo.play();
+    const isPaused = rolloutAnimation.src.includes(rolloutAnimation.dataset.posterSrc);
+
+    if (isPaused) {
+      rolloutAnimation.src = `${rolloutAnimation.dataset.animationSrc}?restart=${Date.now()}`;
       rolloutToggle.textContent = "Pause animation";
       rolloutToggle.setAttribute("aria-label", "Pause reconstruction animation");
     } else {
-      rolloutVideo.pause();
+      rolloutAnimation.src = rolloutAnimation.dataset.posterSrc;
       rolloutToggle.textContent = "Play animation";
       rolloutToggle.setAttribute("aria-label", "Play reconstruction animation");
     }

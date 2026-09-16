@@ -108,10 +108,7 @@
             <p>Each view uses the same ego-up orientation and 64 × 64 m metric extent. The orange trajectory is the recorded or reconstructed actor; the mint trajectory is the recorded ego or reference-driver rollout.</p>
           </div>
           <figure class="rollout-feature">
-            <video autoplay muted loop playsinline preload="metadata" poster="assets/interaction-reconstruction-poster.jpg" data-rollout-video aria-label="Animated comparison of the original host, reconstruction without the relation term, and DriveCAST">
-              <source src="assets/interaction-reconstruction.webm" type="video/webm" />
-              <source src="assets/interaction-reconstruction.mp4" type="video/mp4" />
-            </video>
+            <img class="rollout-animation" src="assets/interaction-reconstruction.gif" data-rollout-animation data-animation-src="assets/interaction-reconstruction.gif" data-poster-src="assets/interaction-reconstruction-poster.jpg" alt="Animated comparison of the original host, reconstruction without the relation term, and DriveCAST" />
             <figcaption>
               <div><b>Stored reconstruction rollout</b><span>Original host · w/o Relation Term · DriveCAST</span><button class="rollout-toggle" type="button" data-rollout-toggle aria-label="Pause reconstruction animation">Pause animation</button></div>
               <p>Actual stored GT and CARLA rollout trajectories over 0–3 s. This is a reconstruction diagnostic, not a learned-policy prediction.</p>
