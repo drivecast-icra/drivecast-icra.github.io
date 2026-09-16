@@ -104,17 +104,21 @@
         <div class="shell">
           <div class="section-heading wide">
             <p class="kicker">03 · Qualitative examples</p>
-            <h2>Inspect the transferred<br />interaction.</h2>
-            <p>Each view uses the same ego-up orientation and 64 × 64 m metric extent. The orange trajectory is the recorded or reconstructed actor; the mint trajectory is the recorded ego or reference-driver rollout.</p>
+            <h2>See the difference<br />on the road.</h2>
+            <p>Side-by-side camera-policy execution on the same CARLA route, with the same weather and traffic seed. Follow the encounter from the front camera, chase camera, and overhead view.</p>
           </div>
           <figure class="rollout-feature carla-feature">
-            <video controls autoplay muted loop playsinline preload="metadata" poster="assets/drivecast-6cam-bev-poster.jpg" aria-label="Six synchronized cameras and semantic bird's-eye view of the selected DriveCAST reconstruction executed in CARLA">
-              <source src="assets/drivecast-6cam-bev.mp4" type="video/mp4" />
+            <video controls muted loop playsinline preload="metadata" poster="assets/closed-loop-comparison-poster.jpg" aria-label="Side-by-side closed-loop driving comparison: Base Planner and DriveCAST">
+              <source src="assets/closed-loop-comparison.mp4" type="video/mp4" />
               Your browser does not support embedded video.
             </video>
+            <div class="comparison-controls" aria-label="Comparison playback">
+              <button type="button" data-comparison-seek="24">Watch the encounter</button>
+              <button type="button" data-comparison-seek="0">Play from start</button>
+            </div>
             <figcaption>
-              <div><b>Six-camera CARLA execution</b><span>Surround RGB · semantic BEV · 20 Hz</span></div>
-              <p>Synchronized 0–4 s reference-driver rollout. The center view aligns CARLA HD-map geometry with stored vehicle states and the executed ego and transferred actor.</p>
+              <div><b>Responding to a cyclist</b><span>Left: Base Planner · Right: DriveCAST</span></div>
+              <p>On this selected route, Base Planner collides with a cyclist; DriveCAST completes the route without a collision. Both camera policies are shown at real time from the same starting point; the final frame is held after completion.</p>
             </figcaption>
           </figure>
           <figure class="rollout-feature">
