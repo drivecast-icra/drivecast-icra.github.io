@@ -38,7 +38,7 @@ def point_mapper(limits, size, padding=14):
 
     def point(left, forward):
         return (
-            round(offset_x + (left - left_min) * scale),
+            round(offset_x + (left_max - left) * scale),
             round(size[1] - offset_y - (forward - forward_min) * scale),
         )
 
@@ -115,7 +115,18 @@ def draw_vehicle(draw, state, track, point, color, outline="#ffffff"):
 def draw_panel(case, trajectory, panel_index, timestamp, size):
     image = Image.new("RGB", size, PANEL_BG)
     draw = ImageDraw.Draw(image)
-    point = point_mapper([-32, 32, -10, 54], size)
+    screen = point_mapper([-32, 32, -32, 32], size)
+    ego_track = trajectory["ego"]
+    ego_state = interpolate(ego_track, max(ego_track["t"][0], min(timestamp, ego_track["t"][-1])))
+    ego_left, ego_forward, heading_left, heading_forward = ego_state
+    if math.hypot(heading_left, heading_forward) < 1e-8:
+        heading_left, heading_forward = 0, 1
+    norm = math.hypot(heading_left, heading_forward) or 1
+    sine, cosine = heading_left / norm, heading_forward / norm
+
+    def point(left, forward):
+        dl, df = left - ego_left, forward - ego_forward
+        return screen(cosine * dl - sine * df, sine * dl + cosine * df)
 
     for polygon in case["map"]["sidewalk"]:
         draw.polygon([point(*coordinates) for coordinates in polygon], fill=SIDEWALK)
@@ -149,7 +160,7 @@ def draw_panel(case, trajectory, panel_index, timestamp, size):
             marker = point(executed_state[0], executed_state[1])
             draw.ellipse((marker[0] - 6, marker[1] - 6, marker[0] + 6, marker[1] + 6), outline=EXECUTION, width=3)
 
-    draw_vehicle(draw, interpolate(trajectory["ego"], timestamp), trajectory["ego"], point, EGO)
+    draw_vehicle(draw, ego_state, trajectory["ego"], point, EGO)
     draw_vehicle(draw, interpolate(trajectory["actor"], timestamp), trajectory["actor"], point, ACTOR)
     return image
 
@@ -191,7 +202,7 @@ def render_frame(case, timestamp, output_path):
     for step in range(5):
         draw.line((602 + step * 7, legend_y + 7, 606 + step * 7, legend_y + 7), fill=EXECUTION, width=3)
     draw.text((645, legend_y), "CARLA execution", font=font(10), fill=MUTED)
-    note = "0-3 s · 64 x 64 m · diagnostic only · not a learned-policy prediction"
+    note = "0-3 s · ego-centered · 64 x 64 m · reconstruction diagnostic"
     note_font = font(10)
     draw.text((WIDTH - 40 - text_width(draw, note, note_font), legend_y), note, font=note_font, fill=MUTED)
     image.save(output_path, optimize=True)

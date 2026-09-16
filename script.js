@@ -3,8 +3,16 @@ const comparisonVideo = document.querySelector(".carla-feature video");
 for (const button of document.querySelectorAll("[data-comparison-seek]")) {
   button.addEventListener("click", () => {
     if (!comparisonVideo) return;
-    comparisonVideo.currentTime = Number(button.dataset.comparisonSeek);
-    comparisonVideo.play().catch(() => { comparisonVideo.controls = true; });
+    const seekAndPlay = () => {
+      comparisonVideo.currentTime = Number(button.dataset.comparisonSeek);
+      comparisonVideo.play().catch(() => { comparisonVideo.controls = true; });
+    };
+    if (comparisonVideo.readyState >= 1) {
+      seekAndPlay();
+    } else {
+      comparisonVideo.addEventListener("loadedmetadata", seekAndPlay, { once: true });
+      comparisonVideo.load();
+    }
   });
 }
 

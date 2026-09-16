@@ -105,27 +105,27 @@
           <div class="section-heading wide">
             <p class="kicker">03 · Qualitative examples</p>
             <h2>See the difference<br />on the road.</h2>
-            <p>Side-by-side camera-policy execution on the same CARLA route, with the same weather and traffic seed. Follow the encounter from the front camera, chase camera, and overhead view.</p>
+            <p>Camera-policy execution on the same CARLA route, with the same weather and traffic seed. Each front-camera video is paired with its own ego-centered BEV on the right.</p>
           </div>
           <figure class="rollout-feature carla-feature">
-            <video controls muted loop playsinline preload="metadata" poster="assets/closed-loop-comparison-poster.jpg" aria-label="Side-by-side closed-loop driving comparison: Base Planner and DriveCAST">
-              <source src="assets/closed-loop-comparison.mp4" type="video/mp4" />
+            <video controls muted loop playsinline preload="metadata" poster="assets/car-bev-comparison-poster.jpg" aria-label="Base Planner above and DriveCAST below, each with driving video on the left and ego-centered BEV on the right">
+              <source src="assets/car-bev-comparison.mp4" type="video/mp4" />
               Your browser does not support embedded video.
             </video>
             <div class="comparison-controls" aria-label="Comparison playback">
-              <button type="button" data-comparison-seek="24">Watch the encounter</button>
+              <button type="button" data-comparison-seek="7">Watch the encounter</button>
               <button type="button" data-comparison-seek="0">Play from start</button>
             </div>
             <figcaption>
-              <div><b>Responding to a cyclist</b><span>Left: Base Planner · Right: DriveCAST</span></div>
-              <p>On this selected route, Base Planner collides with a cyclist; DriveCAST completes the route without a collision. Both camera policies are shown at real time from the same starting point; the final frame is held after completion.</p>
+              <div><b>Navigating surrounding vehicles</b><span>Top: Base Planner · Bottom: DriveCAST</span></div>
+              <p>On this selected route, Base Planner records three collisions with cars; DriveCAST completes the route without a collision. The BEV tracks recorded vehicle positions with ego fixed at the center. Playback is real time; the final frame is held after completion.</p>
             </figcaption>
           </figure>
           <figure class="rollout-feature">
-            <img class="rollout-animation" src="assets/interaction-reconstruction.gif" data-rollout-animation data-animation-src="assets/interaction-reconstruction.gif" data-poster-src="assets/interaction-reconstruction-poster.jpg" alt="Animated comparison of the original host, reconstruction without the relation term, and DriveCAST" />
+            <img class="rollout-animation" src="assets/interaction-reconstruction-ego.gif" data-rollout-animation data-animation-src="assets/interaction-reconstruction-ego.gif" data-poster-src="assets/interaction-reconstruction-ego-poster.jpg" alt="Ego-centered animated comparison of the original host, reconstruction without the relation term, and DriveCAST" />
             <figcaption>
               <div><b>Stored reconstruction rollout</b><span>Original host · w/o Relation Term · DriveCAST</span><button class="rollout-toggle" type="button" data-rollout-toggle aria-label="Pause reconstruction animation">Pause animation</button></div>
-              <p>Actual stored GT and CARLA rollout trajectories over 0–3 s. This is a reconstruction diagnostic, not a learned-policy prediction.</p>
+              <p>Stored GT and CARLA trajectories over 0–3 s, with ego fixed at the center and facing up in each view. This is a reconstruction diagnostic, not a learned-policy prediction.</p>
             </figcaption>
           </figure>
           <div class="case-viewer" data-case-viewer>
