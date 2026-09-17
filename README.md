@@ -15,3 +15,8 @@ HTML reference. Keep previous assets available for cached pages.
 
 Run `node tools/check_release_assets.cjs` before publishing. Changing a query
 parameter on the page URL alone does not invalidate cached styles or scripts.
+
+The comparison always includes front, third-person, and ego-centered BEV views
+for both policies. At widths up to 600px, a reframed copy stacks the two camera
+views beside BEV. Both encodings retain the same 25.9-second timeline; resizing
+preserves playback time, speed, and pause state. Do not restore view selectors.

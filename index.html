@@ -7,10 +7,7 @@
     <meta name="theme-color" content="#263788" />
     <title>DriveCAST — Interaction-Preserving Transfer of Driving Scenarios</title>
     <link rel="icon" href="favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Titillium+Web:wght@400;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/site-1077be078b37.css" />
+    <link rel="stylesheet" href="assets/site-e61f7a1958c0.css" />
   </head>
   <body>
     <a class="skip-link" href="#abstract">Skip to content</a>
@@ -37,8 +34,7 @@
         <div class="shell hero-grid">
           <div class="hero-copy">
             <p class="kicker">Anonymous ICRA 2027 submission</p>
-            <h1>DriveCAST<span>Interaction-Preserving Transfer<br />of Driving Scenarios</span></h1>
-            <p class="hero-summary">Transfer recorded interactions to new road contexts.<br />Learn from reconstructed experience. Plan from cameras.</p>
+            <h1>DriveCAST<span>Interaction-Preserving Transfer <br />of Driving Scenarios</span></h1>
           </div>
         </div>
       </section>
@@ -61,27 +57,19 @@
         <div class="shell">
           <div class="section-heading wide">
             <p class="kicker">02 · Closed-loop driving</p>
-            <h2>Same route.<br />Different outcomes.</h2>
+            <h2>Same route. Different outcomes.</h2>
             <p>A selected camera-policy rollout in CARLA. Both policies use the same route, weather, and traffic seed.</p>
           </div>
           <figure class="rollout-feature carla-feature">
-            <div class="media-heading"><span>CAMERA-POLICY COMPARISON</span><span>Front camera · Third-person camera · BEV</span></div>
-            <div class="view-controls" role="group" aria-label="Comparison view">
-              <button type="button" aria-pressed="true" data-video-view="all" data-video-src="assets/zoo-three-view-comparison.mp4" data-video-poster="assets/zoo-three-view-poster.jpg" data-video-ratio="82 / 45">All views</button>
-              <button type="button" aria-pressed="false" data-video-view="front" data-video-src="assets/comparison-focus-front.mp4" data-video-poster="assets/comparison-focus-front.jpg" data-video-ratio="6 / 5">Front + BEV</button>
-              <button type="button" aria-pressed="false" data-video-view="chase" data-video-src="assets/comparison-focus-chase.mp4" data-video-poster="assets/comparison-focus-chase.jpg" data-video-ratio="6 / 5">Third-person + BEV</button>
-              <button type="button" aria-pressed="false" data-video-view="bev" data-video-src="assets/comparison-focus-bev.mp4" data-video-poster="assets/comparison-focus-bev.jpg" data-video-ratio="54 / 125">BEV detail</button>
-            </div>
-            <p class="view-hint">Need a closer look? Select BEV detail. Views retain the same playback time.</p>
-            <video controls muted loop playsinline preload="metadata" poster="assets/zoo-three-view-poster.jpg" aria-label="Base Planner above and DriveCAST below, each showing front camera, third-person camera, and ego-centered BEV from left to right" aria-describedby="driving-caption">
+            <div class="media-heading"><span>Closed-loop comparison</span><span>Front · Third-person · Ego-centered BEV</span></div>
+            <video controls muted loop playsinline preload="metadata" poster="assets/zoo-three-view-poster.jpg" aria-label="Base Planner above and DriveCAST below; both show front and third-person cameras with ego-centered BEV on the right" aria-describedby="driving-caption">
               <source src="assets/zoo-three-view-comparison.mp4" type="video/mp4" />
               <a href="assets/zoo-three-view-comparison.mp4">Open the comparison video</a>.
             </video>
             <div class="comparison-controls" aria-label="Comparison playback">
-              <button type="button" data-comparison-seek="7">Watch the encounter</button>
-              <button type="button" data-comparison-seek="0">Play from start</button>
+              <button type="button" data-comparison-seek="7">Watch interaction <span aria-hidden="true">↗</span></button>
               <label class="speed-control">Speed <select data-playback-speed aria-label="Playback speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option></select></label>
-              <a href="assets/zoo-three-view-comparison.mp4" target="_blank" rel="noopener" data-video-original>Open full-size video ↗</a>
+              <a href="assets/zoo-three-view-comparison.mp4" target="_blank" rel="noopener" data-video-original>Full size ↗</a>
             </div>
             <p class="playback-status" role="status" aria-live="polite" data-playback-status></p>
             <figcaption id="driving-caption">
@@ -222,6 +210,6 @@
       <div class="figure-dialog-stage"><img data-figure-expanded alt="" /></div>
       <p data-figure-caption></p>
     </dialog>
-    <script src="assets/site-c0e974c45b49.js"></script>
+    <script src="assets/site-e863dc4eb33a.js"></script>
   </body>
 </html>
